@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love to Love - Charity Poster</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #f0f0f0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .poster {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            padding: 15mm;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 8px;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .tagline-main {
+            font-size: 22px;
+            color: #27ae60;
+            font-style: italic;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .header .team {
+            font-size: 14px;
+            color: #27ae60;
+            font-style: italic;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #81C784 0%, #AED581 100%);
+            border-radius: 10px;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-style: italic;
+            font-size: 12px;
+            overflow: hidden;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .section {
+            background: #fafafa;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #ecf0f1;
+        }
+        
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .section h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            color: #9b59b6;
+            font-weight: bold;
+        }
+        
+        .section p, .section li {
+            font-size: 12px;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        
+        .green-text {
+            color: #27ae60;
+        }
+        
+        .purple-text {
+            color: #9b59b6;
+        }
+        
+        .section ul, .section ol {
+            padding-left: 18px;
+        }
+        
+        .image-container {
+            width: 100%;
+            height: 140px;
+            background: #e8e8e8;
+            border-radius: 6px;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-style: italic;
+            overflow: hidden;
+            font-size: 10px;
+            border: 2px dashed #bbb;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        /* 添加一个包装器来保持左右列宽度 */
+        .left-sections {
+            display: contents;
+        }
+        
+        .right-section-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .goals-section {
+            background: linear-gradient(135deg, #f5f0ff 0%, #fff5f5 100%);
+        }
+        
+        .fundraising-section {
+            background: linear-gradient(135deg, #fff5f8 0%, #f0f8ff 100%);
+        }
+        
+        .help-section {
+            background: linear-gradient(135deg, #fff0f5 0%, #f5f0ff 100%);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .info-box {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+        }
+        
+        .info-box h4 {
+            font-size: 13px;
+            color: #e74c3c;
+            margin-bottom: 4px;
+        }
+        
+        .info-box p {
+            font-size: 11px;
+            color: #555;
+        }
+        
+        .qr-section {
+            text-align: center;
+        }
+        
+        .qr-placeholder {
+            width: 90px;
+            height: 90px;
+            background: #333;
+            margin: 0 auto;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+        
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 0;
+        }
+        
+        .left-bottom-group {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .qr-container {
+            flex: 0 0 110px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-details-box {
+            flex: 1;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 10px;
+            border: 2px solid #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-details-box h4 {
+            font-size: 13px;
+            color: #e74c3c;
+            margin-bottom: 6px;
+        }
+        
+        .contact-details-box p {
+            font-size: 11px;
+            color: #555;
+            margin: 3px 0;
+        }
+        
+        .contact-box {
+            background: #27ae60;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-box h3 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .contact-box p {
+            font-size: 12px;
+            margin: 3px 0;
+        }
+        
+        .logo-charity {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding: 8px;
+            background: #f9f9f9;
+            border-radius: 6px;
+        }
+        
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .charity-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .poster {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="header">
+            <h1>Love to Love</h1>
+            <p class="tagline-main">Provide a FOREVER HOME</p>
+            <p class="team">by team 7 Angela Luke Ian Heim</p>
+        </div>
+        
+        <div class="main-image">
+            <img src="image_1.jpg" alt="Children running in field" onerror="this.style.display='none'; this.parentElement.innerHTML='🌈 Children running in field 🌈';">
+        </div>
+        
+        <div class="content-grid">
+            <div class="section">
+                <h2>What do we do</h2>
+                <p class="green-text"><strong>We help homeless, refugee, and poor people.</strong></p>
+                <div class="image-container">
+                    <img src="image_4.jpg" alt="Refugee woman in shelter" onerror="this.style.display='none'; this.parentElement.innerHTML='🏠 Refugee woman in shelter 🏠';">
+                </div>
+                <p class="green-text"><strong>We provide free cafeteria, Donate clothes, and free Education.</strong></p>
+            </div>
+            
+            <div class="section goals-section">
+                <h3>Our goal</h3>
+                <ul class="purple-text">
+                    <li>Provide 150 clothes to poor peoples.</li>
+                    <li>Feed 200 people or refuges.</li>
+                    <li>Help 100 children on education.</li>
+                </ul>
+                <div class="image-container">
+                    <img src="image_3.jpg" alt="Welcome Refugees">
+                </div>
+            </div>
+            
+            <div class="section help-section">
+                <h3>What people do we help</h3>
+                <ol class="purple-text">
+                    <li><strong>Refuges</strong> - people that is been harm by natural disasters.</li>
+                    <li><strong>Homeless people</strong></li>
+                    <li><strong>Poor children</strong></li>
+                </ol>
+                <div class="image-container">
+                    <img src="image_5.jpg" alt="Refugee children" onerror="this.style.display='none'; this.parentElement.innerHTML='👨‍👩‍👧‍👦 Refugee children 👨‍👩‍👧‍👦';">
+                </div>
+            </div>
+            
+            <div class="section fundraising-section">
+                <h2>How do we get money</h2>
+                <ul class="purple-text">
+                    <li><strong>1.Yummy!</strong> We do bake sale to people.</li>
+                    <li><strong>2. Fun!</strong> We sell old toys to others.</li>
+                    <li><strong>3.Recycle!</strong> We recycle our useless things.</li>
+                </ul>
+                <div class="image-container">
+                    <img src="image_2.jpg" alt="Bake Sale">
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-section">
+            <div class="left-bottom-group">
+                <div class="qr-container">
+                    <div class="qr-placeholder">
+                        QR Code
+                    </div>
+                    <p style="font-size: 10px; margin-top: 5px; color: #666;">Scan here</p>
+                </div>
+                
+                <div class="contact-details-box">
+                    <h4>📞 Contact Details</h4>
+                    <p>📧 lovetolove@charity.org</p>
+                    <p>💬 WeChat: LoveToLoveCharity</p>
+                    <p>🌐 www.lovetolove.org</p>
+                </div>
+            </div>
+            
+            <div class="contact-box">
+                <h3>📢 Call to Action</h3>
+                <p><strong>Join us for our fundraiser event!</strong></p>
+                <p>🎯 Donate money • 🤝 Volunteer • 📢 Share information • 🎉 Join fundraiser</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
