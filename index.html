@@ -319,6 +319,145 @@
             color: #e74c3c;
         }
         
+        /* 移动端适配 */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+                align-items: flex-start;
+            }
+            
+            .poster {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                min-height: auto;
+                padding: 15px;
+                margin: 0;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .tagline-main {
+                font-size: 18px;
+            }
+            
+            .header .team {
+                font-size: 12px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .section h2 {
+                font-size: 16px;
+            }
+            
+            .section h3 {
+                font-size: 14px;
+            }
+            
+            .section p, .section li {
+                font-size: 13px;
+            }
+            
+            .main-image {
+                height: 200px;
+            }
+            
+            .image-container {
+                height: 120px;
+            }
+            
+            .bottom-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .left-bottom-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .qr-container {
+                flex: none;
+                width: 100%;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+            
+            .contact-details-box {
+                flex: none;
+            }
+            
+            .contact-box {
+                text-align: center;
+            }
+            
+            .contact-box h3 {
+                font-size: 14px;
+            }
+            
+            .contact-box p {
+                font-size: 13px;
+            }
+        }
+        
+        /* 小屏幕手机适配 */
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .poster {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .tagline-main {
+                font-size: 16px;
+            }
+            
+            .section h2 {
+                font-size: 14px;
+            }
+            
+            .section h3 {
+                font-size: 13px;
+            }
+            
+            .section p, .section li {
+                font-size: 12px;
+            }
+            
+            .main-image {
+                height: 150px;
+            }
+            
+            .image-container {
+                height: 100px;
+            }
+            
+            .qr-placeholder {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .contact-details-box h4 {
+                font-size: 12px;
+            }
+            
+            .contact-details-box p {
+                font-size: 10px;
+            }
+        }
+
         @media print {
             body {
                 background: white;
